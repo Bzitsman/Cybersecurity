@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Password Toolkit</title>
+</head>
+<body>
+    <h1>Password Toolkit</h1>
+
+    <form action="/generate_password" method="post">
+        <label for="length">Password Length:</label>
+        <input type="number" id="length" name="length" value="12" min="8" max="50">
+        <button type="submit">Generate Strong Password</button>
+    </form>
+    {% if strong_password %}
+        <p>Generated Strong Password: {{ strong_password }}</p>
+    {% endif %}
+
+    <hr>
+
+    <form action="/check_strength" method="post">
+        <label for="user_password">Enter Password:</label>
+        <input type="password" id="user_password" name="user_password">
+        <button type="submit">Check Password Strength</button>
+    </form>
+    {% if feedback %}
+        <p>Password Strength: {{ feedback }}</p>
+    {% endif %}
+
+    <hr>
+
+    <form action="/estimate_crack_time" method="post">
+        <label for="user_password_crack">Enter Password:</label>
+        <input type="password" id="user_password_crack" name="user_password">
+        <button type="submit">Estimate Crack Time</button>
+    </form>
+    {% if crack_time %}
+        <p>Estimated Time to Crack: {{ crack_time }}</p>
+    {% endif %}
+</body>
+</html>
